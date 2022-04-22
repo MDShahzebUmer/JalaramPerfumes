@@ -6,6 +6,5 @@
     "SellerManagement": true,
     "PaymentSystem": true,
     "RefundSystem": true,
-    "OfflineManagement": true,
-    "PromotionManagement": true
+    "OfflineManagement": true
 }

@@ -9,6 +9,6 @@ class Currency extends Model
     protected $fillable= [
         'cc',
         'symbol',
-        'name',
+        'name','exchange_rate','is_active'
     ];
 }

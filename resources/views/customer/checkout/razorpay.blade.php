@@ -24,7 +24,7 @@
                         <form action="{{ route('customer.razorpay') }}" method="POST" >
                             @csrf
                             <script src="https://checkout.razorpay.com/v1/checkout.js"
-                                    data-key="{{ env('RAZORPAY_KEY') }}"
+                                    data-key="{{ $configurations->KEY_ID }}"
                                     data-amount="{{ Cookie::get('total') * 100 }}"
                                     data-currency="INR"
                                     data-buttontext="Pay Now"

@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend.']
         Route::get('faq_category_list', 'FaqCategoryController@faqCategoryList')->name('faq_category.list');
         Route::get('faq_subcategory_list', 'FaqSubCategoryController@faqSubCategoryList')->name('faq_subcategory.list');
         Route::get('faq_content_list', 'FaqController@faqContentList')->name('faq_content.list');
+        Route::get('currency_list', 'CurrencyController@currencyList')->name('currency.list');
 
 
         Route::group(['middleware' => ['check_permission']], function () {
@@ -90,6 +91,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend.']
             Route::get('announcements/changeStatus', 'AnnouncementsController@changeStatus');
             Route::put('website_setting/appearance/{id}', 'WebsiteSettingController@appearanceUpdate')->name('website_setting.appearance.update');
             Route::resource('payment_gateway', PaymentGatewayController::class)->except(['create','store','show','destroy']);
+            Route::resource('website_setting/currency', CurrencyController::class, ['names' => 'currency']);
+            Route::get('currency/changeStatus', 'CurrencyController@changeStatus');
         });
     });
 });

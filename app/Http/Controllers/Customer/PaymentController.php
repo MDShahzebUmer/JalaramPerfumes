@@ -66,7 +66,9 @@ class PaymentController extends Controller
         if($request->get('paymentOption') == 1){
             return view('customer.checkout.stripe');
         }elseif($request->get('paymentOption') == 2){
-            return view('customer.checkout.razorpay');
+            $payment = PaymentGateway::query()->where('name','razorpay')->first();
+            $configurations = json_decode($payment->configuration);
+            return view('customer.checkout.razorpay',compact('configurations'));
         }elseif($request->get('paymentOption') == 3){
             $payment = PaymentGateway::query()->where('name','paypal')->first();
             $configurations = json_decode($payment->configuration);

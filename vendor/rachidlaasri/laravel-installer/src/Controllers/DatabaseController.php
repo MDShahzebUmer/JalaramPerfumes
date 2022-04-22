@@ -3,6 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Artisan;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 
 class DatabaseController extends Controller
@@ -28,6 +29,8 @@ class DatabaseController extends Controller
     public function database()
     {
         $response = $this->databaseManager->migrateAndSeed();
+
+        Artisan::call('storage:link');
 
         return redirect()->route('LaravelInstaller::final')
                          ->with(['message' => $response]);
